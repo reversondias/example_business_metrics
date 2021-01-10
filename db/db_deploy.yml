@@ -35,10 +35,3 @@ spec:
           value: testpassword
         - name: POSTGRES_USER
           value: test_user
-        - name: DB_NAME
-          value: dbtest
-        command: | 
-          "psql -U $POSTGRES_USER --command='CREATE DATABSE $DB_NAME' && 
-          psql -U $POSTGRES_USER -dbname=$DB_NAME  \
-          --command='CREATE TABLE sales (id SERIAL PRIMARY KEY, orderId varchar(255), statusOrder boolean, valueOrder varchar(255), clientId varchar(255), \
-          clientName varchar(255), state varchar(255), country varchar(255), phoneNumber varchar(255),statusCode int);'"
