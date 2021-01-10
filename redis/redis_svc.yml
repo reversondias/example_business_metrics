@@ -7,9 +7,9 @@ metadata:
   namespace: redis
 spec:
   ports:
-  - port: 5432
+  - port: 6379
     protocol: TCP
-    targetPort: 5432
+    targetPort: 6379
   selector:
     app: redis
   sessionAffinity: None
