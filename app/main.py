@@ -73,7 +73,7 @@ def db_register(query):
             print("PostgreSQL connection is closed")
 
 
-def app(path):
+def app(path,sleep_time):
     db_create()
     json_data = return_json(path)
     for el in json_data:
@@ -86,8 +86,11 @@ VALUES ('"+el['orderId']+"','"+str(el['statusOrder']).lower()+"','"+el['valueOrd
             print("Sent metric to InfluxDB")
         else:
             print("[WARN] It wasn't possible sent metric to InfluxDB!")
-        time.sleep(2)
+        time.sleep(sleep_time)
 
 
 if __name__ == "__main__":
-    app("./list_1.json")
+    JSON_LIST = os.getenv('JSON_LIST',"./list_1.json")
+    TIME_TO_INTERATION = os.getenv('TIME_TO_INTERATION',2)
+
+    app(JSON_LIST,TIME_TO_INTERATION)

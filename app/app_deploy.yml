@@ -35,3 +35,9 @@ spec:
           value: test_user
         - name: DB_NAME
           value: dbtest
+        - name: REDIS_HOST
+          value: redis-svc.redis.svc.cluster.local
+        - name: JSON_LIST
+          value: ./list_1.json
+        - name: TIME_TO_INTERATION
+          value: "2"
