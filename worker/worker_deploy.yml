@@ -4,6 +4,7 @@ kind: Namespace
 metadata:
   name: worker
 ---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -29,6 +30,6 @@ spec:
         - name: INFLUXDB_HOST
           value: influxdb-svc.influxdb.svc.cluster.local
         - name: INFLUXDB_PORT
-          value: 8086
+          value: "8086"
         - name: REDIS_HOST
           value: redis-svc.redis.svc.cluster.local

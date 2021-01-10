@@ -4,9 +4,9 @@ kind: Namespace
 metadata:
   name: grafana
 ---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: grafana
   name: grafana
@@ -19,7 +19,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: grafana
     spec:
@@ -31,4 +30,3 @@ spec:
         - name: grafana
           containerPort: 3000
           protocol: TCP
-status: {}

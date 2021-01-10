@@ -4,9 +4,9 @@ kind: Namespace
 metadata:
   name: redis
 ---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: redis
   name: redis
@@ -19,7 +19,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: redis
     spec:
