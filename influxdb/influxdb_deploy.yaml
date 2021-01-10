@@ -1,0 +1,40 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: influxdb
+---
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: influxdb
+  name: influxdb
+  namespace: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: influxdb
+    spec:
+      containers:
+      - image: influxdb:1.8
+        name: influxdb
+        resources: {}
+        volumeMounts:
+        - name: config
+          mountPath: /etc/influxdb/
+        ports:
+          - name: influxdb
+            containerPort: 8086
+            protocol: TCP
+      volumes:
+       - name: config
+         configMap:
+           name: influxdb-config

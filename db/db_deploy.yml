@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: db
+---
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: db
+  name: db
+  namespace: db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: db
+    spec:
+      containers:
+      - image: postgres
+        name: db
+        resources: {}
+        ports:
+          - name: db
+            containerPort: 5432
+            protocol: TCP
+        env:
+        - name: POSTGRES_PASSWORD
+          value: testpassword
+        - name: POSTGRES_USER
+          value: test_user
+        - name: DB_NAME
+          value: dbtest
+        command: | 
+          "psql -U $POSTGRES_USER --command='CREATE DATABSE $DB_NAME' && 
+          psql -U $POSTGRES_USER -dbname=$DB_NAME  \
+          --command='CREATE TABLE sales (id SERIAL PRIMARY KEY, orderId varchar(255), statusOrder boolean, valueOrder varchar(255), clientId varchar(255), \
+          clientName varchar(255), state varchar(255), country varchar(255), phoneNumber varchar(255),statusCode int);'"
