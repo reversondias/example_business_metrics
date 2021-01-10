@@ -5,6 +5,8 @@ WORKDIR /root/app
 COPY list_1.json .
 COPY list_2.json .
 COPY main.py .
+COPY worker.py .
+COPY celery_config.py .
 COPY requirements.txt .
 
 RUN pip3.8 install -r requirements.txt

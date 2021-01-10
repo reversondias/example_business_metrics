@@ -41,7 +41,7 @@ def db_create():
         cursor_table.close()
         connection_table.close()
     except (Exception, Error):
-        connection_table_create = psycopg2.connect(user=DB_USER, password=DB_PASSWD, host=DB_HOST, port=DB_PORT)
+        connection_table_create = psycopg2.connect(user=DB_USER, password=DB_PASSWD, host=DB_HOST, port=DB_PORT,database=DB_NAME)
         connection_table_create.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor_table_create = connection_table_create.cursor()
         cursor_table_create.execute("CREATE TABLE sales (id SERIAL PRIMARY KEY, orderId varchar(255), statusOrder boolean, valueOrder varchar(255), clientId varchar(255), clientName varchar(255), state varchar(255), country varchar(255), phoneNumber varchar(255),statusCode int);")
