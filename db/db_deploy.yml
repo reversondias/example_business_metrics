@@ -35,5 +35,3 @@ spec:
           value: testpassword
         - name: POSTGRES_USER
           value: test_user
-        - name: REDIS_HOST
-          value: redis-svc.redis.svc.cluster.local
